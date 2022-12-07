@@ -15,9 +15,17 @@ function TraitementIp($AdresseIp)
 
     $Ip = TraiteIp($AdresseIp);
    
-    $sql = "SELECT country_code, country_name, region_name, city_name, latitude, longitude FROM geoip WHERE ip_from <= ".$Ip." AND ip_to >= ".$Ip;
-    $query = $dbh->query($sql);
+    $sql = 'SELECT country_code, country_name, region_name, city_name, latitude, longitude FROM geoip WHERE ip_from <= :ip AND ip_to >= :ip';
+    $query = $dbh->prepare($sql);
+    $query->execute([':ip' => $Ip]);
     $infos = $query->fetch();
+
+    if($infos['country_code'] != 'FR')
+    {
+        http_response_code(403);
+        require($_SERVER['CONTEXT_DOCUMENT_ROOT'].'/View/error403.html');
+        exit;
+    }
 
     $endtime = microtime(true);
     $seconds = $endtime - $starttime;
