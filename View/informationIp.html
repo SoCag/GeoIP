@@ -1,0 +1,46 @@
+<div class="Background">
+  <fieldset>
+      <div class="Fieldset">
+        <h2 class="Titre">Informations sur l'adresse IP <?php echo $dataArray['datas']['AdresseIp']; ?></h2>
+        <div class="Infos"><b>Code :</b> <?php echo $dataArray[TraitementIp][country_code]; ?></div>
+        <div class="Infos"><b>Pays :</b> <?php echo $dataArray[TraitementIp][country_name]; ?></div>
+        <div class="Infos"><b>Région :</b> <?php echo $dataArray[TraitementIp][region_name]; ?></div>
+        <div class="Infos"><b>Ville :</b> <?php echo $dataArray[TraitementIp][city_name]; ?></div>
+        <div class="Infos"><b>Latitude :</b> <?php echo $dataArray[TraitementIp][latitude]; ?></div>
+        <div class="Infos"><b>Longitude :</b> <?php echo $dataArray[TraitementIp][longitude]; ?></div>
+        <div class="Retour">
+          <a href="../index.php">Retour</a>
+        </div>
+      </div>
+    </fieldset>
+
+</div>
+
+<input id="latitude" type="hidden" value="<?php echo $dataArray['TraitementIp']['latitude']; ?>"/>
+<input id="longitude" type="hidden" value="<?php echo $dataArray['TraitementIp']['longitude']; ?>"/>
+<div id="map"></div>
+
+<script>
+  function initMap()
+  {
+      const latitude = Number(document.getElementById('latitude').value);
+      const longitude = Number(document.getElementById('longitude').value);
+
+      const selector = document.getElementById("map");
+      const center = { lat: latitude, lng: longitude };
+      const options = {
+        center: center,
+        zoom : 8,
+      };
+
+    const map = new google.maps.Map(selector, options);
+
+    const marker = new google.maps.Marker({
+      position: center,
+      map: map,
+    });
+  }
+
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRGrbwJqeRaSqDmTYxFc1d2ZUwxGS8ywA&callback=initMap"></script>

@@ -1,0 +1,20 @@
+<div class="Background">
+    <fieldset>
+        <div class="Fieldset">
+          <h2>Temps passé : <?php echo $dataArray['time']; ?>&nbsp;secondes</h2>
+          Soit une moyenne de <?php echo $dataArray['moytime']; ?>&nbsp;secondes par traitement.
+          <hr>
+          <div class="Formulaire">
+                <form action="../Modele/ResponseTimeTraitement.php" method='post'>
+                    <input placeholder="Nombre d'adresses IP" type="number" name="nbIpAdress" min='1' value='1'/>
+                    <button type="submit">Recommencer la simulation</button>
+                </form>
+          </div>
+          <hr>
+          <div class="Retour">
+            <a href="../index.php">Retour</a>
+          </div>
+        </div>
+      </fieldset>
+  </div>
+  

@@ -1,0 +1,38 @@
+<div class="Background">
+    <fieldset>
+        <div class="Fieldset">
+            <div class="Formulaire">
+                <h1>Importer les données</h1>
+                <hr>
+                <form action="Modele/ImportDataTraitement.php" method='post'>
+                    <button type="submit">Importer les adresses IP dans la base</button>
+                </form>
+                <span>Cette action peut prendre du temps.</span>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="Fieldset">
+            <div class="Formulaire">
+                <h1>Récupérer des informations</h1>
+                <form action="Modele/IpServerTraitement.php" method='post'>
+                    <input placeholder="Adresse IP" type="text" name="ipAdress"/>
+                    <button type="submit">Connaître les informations de cette adresse IP</button>
+                    <button type="submit">Connaître les informations de mon IP</button>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="Fieldset">
+            <div class="Formulaire">
+                <h1>Tester le temps de réponse</h1>
+                <hr>
+                <form action="Modele/ResponseTimeTraitement.php" method='post'>
+                    <input placeholder="Nombre d'adresses IP" type="number" name="nbIpAdress" min='1' value='1'/>
+                    <button type="submit">Tester le temps de réponse</button>
+                </form>
+            </div>
+        </div>
+    </fieldset>
+</div>
